@@ -1,5 +1,4 @@
 import pytest
-import time
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -7,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from pages.reg_page import RegPage
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def reg_page(chrome_browser_instance):
     return RegPage(chrome_browser_instance)
 

@@ -1,6 +1,5 @@
 import pytest
 import os
-import time
 
 from dotenv import load_dotenv
 from selenium.webdriver.common.by import By
@@ -17,7 +16,7 @@ valid_password_email = os.getenv('valid_password_email')
 valid_password_phone = os.getenv('valid_password_phone')
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def reg_page(chrome_browser_instance):
     return RegPage(chrome_browser_instance)
 

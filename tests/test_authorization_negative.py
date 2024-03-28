@@ -15,7 +15,7 @@ invalid_login = os.getenv('invalid_login')
 invalid_password = os.getenv('invalid_password')
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def auth_page(chrome_browser_instance):
     return AuthPage(chrome_browser_instance)
 
@@ -23,7 +23,7 @@ def auth_page(chrome_browser_instance):
 def test_unsuccessful_authorization_by_email(auth_page):
     auth_page.input_username.send_keys(invalid_email)
     auth_page.input_password.send_keys(invalid_password)
-    time.sleep(1)  # если надо ввести капчу
+    time.sleep(1)  # если требуется ввести капчу
     auth_page.btn_enter.click()
 
     error_message = auth_page._web_driver.find_element(By.ID, "form-error-message")
@@ -38,7 +38,7 @@ def test_unsuccessful_authorization_by_email(auth_page):
 def test_unsuccessful_authorization_by_phone(auth_page):
     auth_page.input_username.send_keys(invalid_phone)
     auth_page.input_password.send_keys(invalid_password)
-    time.sleep(1)  # если надо ввести капчу
+    time.sleep(1)  # если требуется ввести капчу
     auth_page.btn_enter.click()
 
     error_message = auth_page._web_driver.find_element(By.ID, "form-error-message")
@@ -53,7 +53,7 @@ def test_unsuccessful_authorization_by_phone(auth_page):
 def test_unsuccessful_authorization_by_login(auth_page):
     auth_page.input_username.send_keys(invalid_login)
     auth_page.input_password.send_keys(invalid_password)
-    time.sleep(1)  # если надо ввести капчу
+    time.sleep(1)  # если требуется ввести капчу
     auth_page.btn_enter.click()
 
     error_message = auth_page._web_driver.find_element(By.ID, "form-error-message")

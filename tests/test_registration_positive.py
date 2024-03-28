@@ -5,7 +5,6 @@ import time
 from dotenv import load_dotenv
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from pages.reg_page import RegPage
 
@@ -17,10 +16,8 @@ valid_phone = os.getenv('valid_phone')
 valid_password_email = os.getenv('valid_password_email')
 valid_password_phone = os.getenv('valid_password_phone')
 
-invalid_email = os.getenv('invalid_email')
 
-
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def reg_page(chrome_browser_instance):
     return RegPage(chrome_browser_instance)
 

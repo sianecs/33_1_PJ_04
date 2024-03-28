@@ -10,7 +10,8 @@ import uuid
 import allure
 from selenium import webdriver
 
-@pytest.fixture(scope="module")
+
+@pytest.fixture(scope="function")
 def chrome_browser_instance(request):
     options = webdriver.ChromeOptions()
     browser = webdriver.Chrome(options=options)
@@ -28,6 +29,7 @@ def chrome_browser_instance(request):
         for cookie in after_cookies:
             f.write(str(cookie) + "\n")
     browser.quit()
+
 
 @pytest.fixture
 def chrome_options(chrome_options):
@@ -52,7 +54,6 @@ def pytest_runtest_makereport(item, call):
 
 @pytest.fixture
 def web_browser(request, selenium):
-
     browser = selenium
     browser.set_window_size(1400, 1000)
 
@@ -81,7 +82,7 @@ def web_browser(request, selenium):
                 print(log)
 
         except:
-            pass # just ignore any errors here
+            pass  # just ignore any errors here
 
 
 def get_test_case_docstring(item):

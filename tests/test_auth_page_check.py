@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from pages.auth_page import AuthPage
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def auth_page(chrome_browser_instance):
     return AuthPage(chrome_browser_instance)
 
