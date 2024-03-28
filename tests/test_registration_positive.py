@@ -48,7 +48,7 @@ def test_successful_registration_by_phone(reg_page):
     reg_page.input_password.send_keys(valid_password_phone)
     reg_page.input_confirm_password.send_keys(valid_password_phone)
     reg_page.btn_register.click()
-    time.sleep(2)
+    time.sleep(1)
     confirm_phone_title = WebDriverWait(reg_page._web_driver, 3).until(
         EC.presence_of_element_located((By.XPATH, "//*[@id='page-right']/div/div/h1"))
     )

@@ -67,6 +67,7 @@ def test_auth_page_all_fields_text(auth_page):
     password_span = auth_page._web_driver.find_element(By.XPATH, password_span_xpath)
     assert password_span.text == "Пароль"
 
+
 def test_auth_page_forgot_password_text_color(auth_page):
     forgot_password_text = auth_page.forgot_password.get_text()
     assert forgot_password_text == "Забыл пароль"
@@ -74,6 +75,7 @@ def test_auth_page_forgot_password_text_color(auth_page):
     element_color = forgot_password.value_of_css_property('color')
     expected_color = 'rgba(16, 24, 40, 0.5)'
     assert element_color == expected_color
+
 
 def test_auth_page_enter_button_text_color(auth_page):
     enter_button_text = auth_page.btn_enter.get_text()
@@ -83,15 +85,17 @@ def test_auth_page_enter_button_text_color(auth_page):
     expected_color = 'rgba(255, 79, 18, 1)'
     assert button_color == expected_color
 
+
 def test_auth_page_btn_register_text_color(auth_page):
     btn_register_text = auth_page.btn_register.get_text()
     auth_page.btn_register.click()
-    time.sleep(2)
+    time.sleep(1)
     reg_title = WebDriverWait(auth_page._web_driver, 3).until(
         EC.presence_of_element_located((By.XPATH, "//h1[contains(text(), 'Регистрация')]"))
     )
     assert btn_register_text == "Зарегистрироваться"
     assert reg_title.text == "Регистрация"
+
 
 def test_auth_page_help_modal_text_color(auth_page):
     help_modal_text = auth_page.help_modal.get_text()

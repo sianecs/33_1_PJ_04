@@ -52,6 +52,7 @@ def test_reg_page_check_all_fields_text(reg_page):
     )
     assert confirm_password_span.text == "Подтверждение пароля"
 
+
 def test_reg_page_register_button_text_color(reg_page):
     reg_page.btn_kc_register.click()
     register_button_text = reg_page.btn_register.get_text()
